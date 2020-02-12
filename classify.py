@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from scipy import misc
+from imageio import imwrite
 from os import environ
 environ['SCIPY_PIL_IMAGE_VIEWER'] = r"C:\WINDOWS\system32\mspaint.exe"
 
@@ -31,7 +31,7 @@ def recovery(data):
         row, col = oned_to_2d_coord(i, col_max)
         color = label_to_color[label]
         image[row, col] = color*255
-    misc.imsave("{}_recover.png".format(name), image)
+    imwrite("{}_recover.png".format(name), image)
     fig, ax = plt.subplots()
     im = ax.imshow(data_mat, cmap=plt.cm.gray)
     for row in range(row_max):

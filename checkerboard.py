@@ -1,6 +1,6 @@
 import argparse
 import numpy as np
-from scipy import misc
+import imageio
 from os import environ
 environ['SCIPY_PIL_IMAGE_VIEWER'] = r"C:\WINDOWS\system32\mspaint.exe"
 
@@ -13,7 +13,7 @@ def main(args):
             grid_number_col = int(np.floor(j / args.pixel))
             if (grid_number_row + grid_number_col) % 2:
                 data[i, j] = 255
-    misc.imsave(args.output, data)
+    imageio.imwrite(args.output, data)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

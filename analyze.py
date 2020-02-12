@@ -1,13 +1,9 @@
-import sys
-import json
 import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-from scipy.ndimage import imread
+import imageio
 import argparse
 
 def read_img(filename):
-    gray = imread(fname=filename, mode='L')
+    gray = imageio.imread(filename, pilmode='L')
     bw = gray > 70
     return bw
 
