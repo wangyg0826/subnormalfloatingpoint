@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from imageio import imwrite
 from os import environ
-environ['SCIPY_PIL_IMAGE_VIEWER'] = r"C:\WINDOWS\system32\mspaint.exe"
+
 
 def oned_to_2d_coord(oned, col_max):
     row = int(oned / col_max)
